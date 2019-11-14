@@ -18,10 +18,8 @@ class Appointment(models.Model):
     time = models.DateTimeField()
     time_zone = TimeZoneField(default='UTC')
 
+    task_id = models.CharField(max_length=50, blank=True, editable=False)
+    created = models.DateTimeField(auto_now_add=True)
 
-task_id = models.CharField(max_length=50, black=True, editable=False)
-created = models.DateTimeField(auto_now_add=True)
-
-
-def __str__(self):
-    return 'Appointment #{0} - {1}'.format(self.pk, self.name)
+    def __str__(self):
+        return 'Appointment #{0} - {1}'.format(self.pk, self.name)

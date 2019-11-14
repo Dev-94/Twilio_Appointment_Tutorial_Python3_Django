@@ -6,8 +6,9 @@ from .models import Appointment
 
 
 class AppointmentCreateView(SuccessMessageMixin, CreateView):
-    model = Model
-    template_name = ".html"
+    model = Appointment
+    fields = ['name', 'phone_number', 'time', 'time_zone']
+    success_message = "Appointment successfully created."
 
 
 # from django.shortcuts import render
