@@ -1,0 +1,39 @@
+{% extends "base.html"%}
+
+{% load boostrap_tags %}
+
+{% block title %}New reminder{% endblock title %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-9">
+            <div class = "page-header">
+            <h1>
+                {% if not object.pk %}
+                    New appointment
+                {% else %}
+                    Edit appointment
+                {% endif %}
+                </h1>
+             </div>
+
+             <form class="form-hoizontal" method="post">
+                {% csrf_token %} 
+                {{ form|as_bootstrap_horizontal }}
+                <div class = "form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a href="#back" class="btn btn-default">Cancel</a>
+                        <button type="submit" class="btn btn-primary">
+                            {% if not object.pk %}
+                                Create appointment
+                            {% else %}
+                                Update appointment
+                            {% endif %}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
