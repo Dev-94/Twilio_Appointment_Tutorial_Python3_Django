@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import redis
 
-from django.core.exceptions import validationError
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
