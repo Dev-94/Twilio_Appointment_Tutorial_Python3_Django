@@ -30,6 +30,6 @@ class AppointmentUpdateView(SuccessMessageMixin, UpdateView):
     success_message = 'Appointment successfully updated.'
 
 
-class AppoitnmentDeleteView(DeleteView):
+class AppointmentDeleteView(DeleteView):
     model = Appointment
     success_url = reverse_lazy('list_appointments')
