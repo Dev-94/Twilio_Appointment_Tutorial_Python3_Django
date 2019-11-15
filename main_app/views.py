@@ -1,8 +1,20 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
+from django.views.generic.edit import DeleteView
+from django.views.generic.edit import UpdateView
+from django.views.generic.list import ListView
+
 
 from .models import Appointment
+
+
+class AppointmentListView(ListView):
+    model = Appointment
+
+
+class AppointmentDetailView(DetailView):
+    model = Appointment
 
 
 class AppointmentCreateView(SuccessMessageMixin, CreateView):
@@ -11,10 +23,12 @@ class AppointmentCreateView(SuccessMessageMixin, CreateView):
     success_message = "Appointment successfully created."
 
 
-# from django.shortcuts import render
-# from django.http import HttpResponse
+class AppointmentUpdateView(SuccessMessageMixin, UpdateView):
+    model = Appointment
+    fields = ['name', 'phone_number', 'time', 'time_zone']
+    success_message = 'Appointment successfully updated.'
 
-# def home(request):
-#     return HttpResponse('<h1>Hello /ᐠ｡‸｡ᐟ\ﾉ</h1>')
 
-# # Create your views here.
+class AppoitnmentDeleteView(DeleteView):
+    model = Appointment
+    success_url = reverse_lazy('list_appointments')
