@@ -23,3 +23,6 @@ class Appointment(models.Model):
 
     def __str__(self):
         return 'Appointment #{0} - {1}'.format(self.pk, self.name)
+
+    def get_absolute_url(self):
+        return reverse("view_appointment", args=[str(self.id)])
