@@ -16,3 +16,7 @@ def send_sms_reminder(appointment_id):
         appointment = Appointment.objects.get(pk=appointment_id)
     except Appointment.DoesNotExist:
         return
+
+    appointment_time = arrow.get(appointment.time, appointment.time_zone.zone)
+    body = 'Hi {0}. You have an appointment coming up at {1}.'.format(
+        appointment.name, appointment_time.format('h:mm a'))
