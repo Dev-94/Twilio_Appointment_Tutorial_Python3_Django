@@ -14,7 +14,7 @@
                 <p><strong>No upcoming appointments.</strong> Why not <a href="{% url 'new_appointment' %}">schedule one?</a>
             {% endif %}
 
-            <table class = "table table-striped">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -34,15 +34,15 @@
                         <td>{{appointment.time}}</td>
                         <td>{{appointment.created}}</td>
                         <td>
-                        <a class="btn btn-default btn-xs" href="{% url 'edit_appointment' appointment.pk %}">Edit</a>
-                        <a class="btn btn-xs btn-danger" href="{% url 'delete_appointment' appointment.pk%}">Delete</a>
+                            <a class="btn btn-default btn-xs" href="{% url 'edit_appointment' appointment.pk %}">Edit</a>
+                            <a class="btn btn-xs btn-danger" href="{% url 'delete_appointment' appointment.pk%}">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <a class="btn btn-primary" href="{% url 'new_appointment' %}"> New </a>
+        <a class="btn btn-primary" href="{% url 'new_appointment' %}">New</a>
     </div>  
     </div>
 {% endblock %}
