@@ -25,6 +25,11 @@ SECRET_KEY = '1gv6krq&3#4s2dwwqu2-j&j(e7wy_^d&9**hwy^3*=hp8o%mkj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+TWILIO_NUMBER = os.environ.get('13343669860')
+TWILIO_ACCOUNT_SID = os.environ.get('ACda05149c0b4d416716ba2ba9e217ae3b')
+TWILIO_AUTH_TOKEN = os.environ.get('3d46e40bd95ee85114d46c387c78bc3c')
+
+
 ALLOWED_HOSTS = []
 
 
