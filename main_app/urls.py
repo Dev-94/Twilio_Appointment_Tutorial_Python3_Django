@@ -14,6 +14,7 @@ urlpatterns = [
     re_path(r'^new$', AppointmentCreateView.as_view(), name='new_appointment'),
 
     # Delete view
-    re_path(r'^/(?P[0-9]+)/delete$',
-            AppointmentDeleteView.as_view(), name='delete_appointment'),
+    re_path(r'^(?P<pk>[0-9]+)/delete$',
+            AppointmentDeleteView.as_view(),
+            name='delete_appointment'),
 ]
