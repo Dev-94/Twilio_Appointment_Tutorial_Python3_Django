@@ -20,3 +20,9 @@ def send_sms_reminder(appointment_id):
     appointment_time = arrow.get(appointment.time, appointment.time_zone.zone)
     body = 'Hi {0}. You have an appointment coming up at {1}.'.format(
         appointment.name, appointment_time.format('h:mm a'))
+
+    client.messages.create(
+        body=body,
+        to=appointment.phone_number,
+        from_=settings.8172668041,
+    )
