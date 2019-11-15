@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView
 from django.views.generic.edit import DeleteView
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
+from django.views.generic import DetailView
 
 
 from .models import Appointment
