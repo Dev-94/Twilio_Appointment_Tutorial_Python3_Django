@@ -29,6 +29,24 @@ TWILIO_NUMBER = os.environ.get('13343669860')
 TWILIO_ACCOUNT_SID = os.environ.get('ACda05149c0b4d416716ba2ba9e217ae3b')
 TWILIO_AUTH_TOKEN = os.environ.get('3d46e40bd95ee85114d46c387c78bc3c')
 
+DRAMATIQ_BROKER = {
+    "BROKER": "dramatiq.brokers.redis.RedisBroker",
+    "OPTIONS": {
+        "url": 'redis://localhost:6379/0',
+    },
+    "MIDDLEWARE": [
+        "dramatiq.middleware.Prometheus",
+        "dramatiq.middleware.AgeLimit",
+        "dramatiq.middleware.TimeLimit",
+        "dramatiq.middleware.Callbacks",
+        "dramatiq.middleware.Retries",
+        "django_dramatiq.middleware.AdminMiddleware",
+        "django_dramatiq.middleware.DbConnectionsMiddleware",
+    ]
+}
+
+REMINDER_TIME = 30  # minutes
+
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +55,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'main_app',
+    'django_dramatiq',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,5 +141,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+PROJECT_PATH = '/Users/Deven/Desktop/Desktop_Folder/appointment'
+
+TEMPLATE_DIRS = (
+    PROJECT_PATH + '/templates/',
+)
+
+STATIC_ROOT = BASE_DIR + '/staticfiles'
 
 STATIC_URL = '/static/'

@@ -28,3 +28,6 @@ def send_sms_reminder(appointment_id):
         to=appointment.phone_number,
         from_=settings.TWILIO_NUMBER,
     )
+# client.messages.create()
+    # function to text user
+    # call the function
