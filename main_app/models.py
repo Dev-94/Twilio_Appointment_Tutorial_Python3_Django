@@ -27,6 +27,13 @@ class Appointment(models.Model):
     def get_absolute_url(self):
         return reverse("view_appointment", args=[str(self.id)])
 
+    def clean(self):
+        appointment_time = arrow.get(self.time, self.time_zone.zone)
+        if appointment_time < arrow.utcnow():
+            raise ValidationError(
+                'You cannot schedule an appointment for the past. '
+                'Please check your time and time_zone')
+
     def schedule_reminder(self):
         appointment_time = arrow.get(self.time, self.time_zone.zone)
         reminder_time = appointment_time.shift(minutes=-30)
