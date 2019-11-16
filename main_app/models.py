@@ -40,3 +40,12 @@ class Appointment(models.Model):
             delay=milli_to_wait)
 
         return result.options['redis_messages_id']
+
+    def save(self, *args, **kwargs):
+        if self.task_id:
+            self.cancel_task()
+
+        super(Appointment, self).save(*args, **kwargs)
+
+        self.task_id = self.schedule_reminder()
+        super(Appointment, self).save(*args, **kwargs)
