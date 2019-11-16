@@ -56,3 +56,7 @@ class Appointment(models.Model):
 
         self.task_id = self.schedule_reminder()
         super(Appointment, self).save(*args, **kwargs)
+
+    def cancel_task(self):
+        redis_client = redis.Redis(host='localhost', port=6379, db=0)
+        redis_client.hdel("dramtiq:default.DQ.msgs", self.task_id)
